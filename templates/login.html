@@ -1,0 +1,24 @@
+{% extends "baseform.html" %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block form %}
+    <form class="form-container" action="/dologin" method="POST">
+        <p>Username: <input type="text" name="username" required></p>
+        <p>Password: <input type="password" name="password" required></p>
+        <input type="submit" value="Log in">
+    </form>
+{% endblock %}
+
+
+{% block error %}
+    {% if error %}
+    <p>Invalid Information!</p>
+    <p>Make sure that you entered correct username and password!</p>
+    {% endif %}
+{% endblock %}
+
+
+
+
+

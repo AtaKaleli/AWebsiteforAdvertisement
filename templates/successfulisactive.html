@@ -1,0 +1,20 @@
+{% extends "basesuccessful.html" %}
+
+{% block title %} Change ActivationStatus{% endblock %}
+
+{% block content %}
+{% if activationStatus == "active" %}
+<h2>You have successfully changed your advertisement status from deactive to active!</h2><br><br>
+<p>Click <a href="/myadvertisements">here</a> to go back to my advertisements page!</p>
+{% else %}
+<h2>You have successfully changed your advertisement status from active to deactive!</h2><br><br>
+<p>Click <a href="/myadvertisements">here</a> to go back to my advertisements page!</p>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+

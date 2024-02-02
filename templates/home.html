@@ -1,0 +1,87 @@
+{% extends "basemenu.html" %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+
+{% if username %}
+<br>
+<h3>Welcome {{ session["user"] }}! Type and search for an active advertisements here!</h3>
+<br>
+{% else %}
+<br>
+<h3>Welcome guest! Type and search for an active advertisements here!</h3>
+<br>
+{% endif %}
+
+<form class="searchForm" name="searchform" action="/searchadvertisement" method="GET">
+    <input type="text" name="searchbox">
+    <select name="categories">
+        <option value="All Categories">All categories</option>
+        {% for category in availableCategory %}
+            <option value="{{ category[0] }}">{{ category[1] }}</option>
+        {% endfor %}
+        <input type="submit" value="Search">
+    </select>
+</form>
+
+
+
+
+{% if not categoryname %}
+
+    {% if advertisements %}
+        <table id="displayadvertisements" style="border-collapse:collapse;" border="1px ">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Contact Full Name</th>
+                <th></th>
+            </tr>
+
+            {% for advertisement in advertisements %}
+            <tr>
+                <td>{{ advertisement[0] }}</td>
+                <td>{{ advertisement[1] }}</td>
+                <td>{{ advertisement[2] }}</td>
+                <td><a href="/moreinfoadvertisement/{{ advertisement[3] }}">See More</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+        <p>There is no advertisement to show for this category right now!</p>
+    {% endif %}
+
+<!--this means user chose all categories-->
+{% else %}
+
+    {% for group in groupedList %}
+        <h3>{{ group[0][3] }}</h3>
+        <table id="displayadvertisements" style="border-collapse:collapse;" border="1px ">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Contact Full Name</th>
+            <th></th>
+        </tr>
+
+        {% for advertisement in group %}
+        <tr>
+            <td>{{ advertisement[0] }}</td>
+            <td>{{ advertisement[1] }}</td>
+            <td>{{ advertisement[2] }}</td>
+            <td><a href="/moreinfoadvertisement/{{advertisement[4]}}">See More</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+
+    {% endfor %}
+    {% for notavailablecategory in notAvailableCategories %}
+        <h3>{{ notavailablecategory }}</h3>
+        <p>There is no advertisement to show for this category right now!</p>
+    {% endfor %}
+
+
+{% endif %}
+{% endblock %}

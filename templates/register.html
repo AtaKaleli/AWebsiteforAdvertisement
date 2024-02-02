@@ -1,0 +1,47 @@
+{% extends "baseform.html" %}
+
+{% block title %} Registration Page {% endblock %}
+
+{% block form %}
+    <form name="registrationform" class="form-container" action="/doregister" method="POST" onsubmit="return validateRegister();">
+    <p>Username: <input type="text" name="username" onkeyup="showHint(this.value)" ></p>
+    <p>Password: <input type="password" name="password"></p>
+    <p>Fullname: <input type="text" name="fullname"></p>
+    <p>Email Address: <input type="text" name="email"></p>
+    <p>Telephone Number: <input type="text" name="telno"></p>
+    <input type="submit" value="Register">
+    <p>Already Taken Usernames: <span id="txtHint"></span></p>
+    </form>
+    <br><br>
+{% endblock %}
+
+
+{% block error %}
+    <!--error message for username if user enters try to register with a username that is already exist in db-->
+    {% if usernameError %}
+    <div id="usernameError">
+        <h3>Error</h3>
+        <p>You can't register with this username!</p>
+        <p>It is already taken! Please try another one</p>
+    </div>
+    {% endif %}
+
+    <!--error message for password issues if any-->
+    <div>
+    <h3 id="errorLabel"></h3>
+    <p id="passwordError"></p>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+{% extends "basemenu.html" %}
+
+{% block title %} My Advertisements {% endblock %}
+
+{% block content %}
+
+<form name="newadvertisement" action="/addadvertisement" method="POST">
+  <br>
+  <h3>Add New Advertisement</h3>
+  <p>Advertisement Title: <input type="text" name="title" required></p>
+  <p>Advertisement Description: <input type="text" name="description" required></p>
+  <p>Advertisement Categories:
+      <select name="categories">
+      {% for category in availableCategory %}
+          <option value="{{ category[0] }}">{{ category[0] }}</option>
+      {% endfor %}
+      </select>
+  </p>
+  <br>
+  <input type="submit" value="Add Advertisement">
+</form><br><br>
+
+
+<h3>My Advertisements</h3>
+{% if previouslyAdvertisements %}
+
+<table id="previousadvertisements" style="border-collapse:collapse;" border="1px ">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Activate/Deactivate</th>
+    </tr>
+
+    {% for myadvertisement in previouslyAdvertisements %}
+    <tr>
+        <td>{{ myadvertisement[0] }}</td>
+        <td>{{ myadvertisement[1] }}</td>
+        <td>{{ myadvertisement[2] }}</td>
+
+        {% if myadvertisement[3] %}
+        <td><a href="/deactivateadvertisement/{{ myadvertisement[4] }}">Deactivate</a></td>
+
+        {% else %}
+        <td><a href="/activateadvertisement/{{ myadvertisement[4] }}">Activate</a></td>
+
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>You dont have any advertisements yet! Go add some!</p>
+{% endif %}
+
+{% endblock %}

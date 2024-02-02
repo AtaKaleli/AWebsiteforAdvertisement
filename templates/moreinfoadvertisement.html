@@ -1,0 +1,42 @@
+{% extends "basemenu.html" %}
+
+{% block title %} More Info Advertisement {% endblock %}
+
+{% block content %}
+
+<h3>More Details about this advertisement</h3><br>
+<table id="moreinfoadvertisement" style="border-collapse:collapse;" border="1px ">
+    <tr>
+        <th>Title</th>
+        <td>{{ moredetails[0][0] }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ moredetails[0][1] }}</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>{{ moredetails[0][2] }}</td>
+    </tr>
+    <tr>
+        <th>Contact Full Name</th>
+        <td>{{ moredetails[0][3] }}</td>
+    </tr>
+    <tr>
+        <th>Contact Email</th>
+        <td>{{ moredetails[0][4] }}</td>
+    </tr>
+    <tr>
+        <th>Contact Telephone Number</th>
+        <td>{{ moredetails[0][5] }}</td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+{% endblock %}

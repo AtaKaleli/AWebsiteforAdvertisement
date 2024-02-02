@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pagestyle.css') }}">
+</head>
+<body>
+
+<div>
+    {% if "user" in session %}
+        <p><a href="/home">Home Page</a> | <a href="/myadvertisements">My Advertisements</a> | <a href="/myprofile">My Profile</a> | <a href="/logout">Logout</a></p>
+    {% else %}
+        <p><a href="/register">Register</a> | <a href="/login">Login</a></p>
+    {% endif %}
+</div>
+
+<div>
+    {% block content %}{% endblock %}
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends "baseform.html" %}
+
+{% block title %} My Profile  {% endblock %}
+
+{% block form %}
+
+    <h2>Edit Profile</h2><br>
+
+    <form action="/editprofile" method="POST">
+    <p>Username: <input type="text" name="username" value="{{ userdata[0] }}"></p>
+    <p>Password: <input type="password" name="password" value="{{ userdata[1] }}"></p>
+    <p>Fullname: <input type="text" name="fullname" value="{{ userdata[2] }}"></p>
+    <p>Email Address: <input type="text" name="email" value="{{ userdata[3] }}"></p>
+    <p>Telephone Number: <input type="text" name="telno" value="{{ userdata[4] }}"></p>
+    <br>
+    <input type="submit" value="Edit">
+    </form>
+    <br><br>
+{% endblock %}
+
+
+{% block error %}
+
+{% if error == "usernameerror" %}
+    <h2>You can't user this username!</h2>
+{% elif  error == "noerror" %}
+    <h2>Your data is updated successfully!</h2><br>
+    <p>Click <a href="/home">here</a> to go back to homepage!</p>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
